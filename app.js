@@ -68,7 +68,7 @@ passport.deserializeUser(async (_id, done) => {
 
 // MONGO SESSION STORE SETUP //
 const sessionStore = new MongoSessionStore({
-  client: mongoConn,
+  mongoUrl: process.env.MONGO_KEY,
   collectionName: "sessions",
 });
 
