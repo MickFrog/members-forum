@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  min-height: 100vh;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+
+  background-image: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
+}
+
+header {
+  padding: 1rem;
+  font-size: clamp(1rem, 2vmin + 10px, 1.4rem);
+  padding-left: clamp(10px, 2vmin + 15px, 4rem);
+  text-align: center;
+}
+
+main {
+  flex: 1 0 auto;
+  width: 100%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.messages-container {
+  width: clamp(15rem, 80vw, 60rem);
+  padding: 0.5rem 0;
+  max-height: 70vh;
+
+  overflow-y: auto;
+}
+
+.message {
+  padding: 0.6rem 0 0.6rem 0.5rem;
+  margin: 20px 10px;
+  border-radius: 10px;
+  background-color: #00b7ff;
+  position: relative;
+
+  word-wrap: break-word;
+}
+
+.message::before {
+  position: absolute;
+  content: attr(data-user);
+  padding: 2px;
+  top: -15px;
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+.message::after {
+  position: absolute;
+  display: none;
+  content: attr(data-added);
+  padding: 2px;
+  right: 10px;
+  background-color: #ccc;
+  border-radius: 5px;
+}
+
+.message:hover::after {
+  display: initial;
+}
+
+.user {
+  transform: translateY(-20px);
+  background-color: gray;
+  width: max-content;
+}
+
+form {
+  border: none;
+  text-align: center;
+  margin: 10px 5px;
+
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+input[type="text"],
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+
+  border: none;
+  padding: 0.4rem;
+  margin: 10px 5px;
+}
+
+textarea {
+  resize: vertical;
+  max-height: 8rem;
+}
+
+button {
+  width: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ccc;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+  margin-top: auto;
+  background-color: #32322c;
+  padding: 1rem;
+  color: white;
+}
+
+a {
+  color: #00b7ff;
+}
