@@ -91,7 +91,7 @@ form {
   align-items: center;
 }
 
-input[type="text"],
+input,
 textarea {
   font-family: inherit;
   font-size: inherit;
