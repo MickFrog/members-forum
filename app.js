@@ -27,7 +27,7 @@ async function main() {
   }
 }
 // connect to mongoDB
-const mongoConn = main();
+main();
 
 const User = require("./models/user");
 
