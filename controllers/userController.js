@@ -5,15 +5,16 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const Message = require("../models/message");
 
-exports.index_get = asyncHandler(function (req, res, next) {
+exports.index_get = asyncHandler(async function (req, res, next) {
   // if no logged in user
   if (!req.user) {
     res.redirect("/login");
     return;
   }
 
-  // TODO: Fetch user messages
-  res.render("index", { title: "Members Forum", messages: [] });
+  const messages = await Message.find({});
+
+  res.render("index", { title: "Members Forum", messages: messages });
 });
 
 // to add a message to forum
