@@ -2,26 +2,18 @@ const express = require("express");
 const router = express.Router();
 
 const Message = require("../models/message");
+const userController = require("../controllers/userController");
 
 /* GET home page. */
-router.get("/", async function (req, res, next) {
-  const messages = await Message.find();
+router.get("/", userController.index_get);
 
-  res.render("index", { title: "Mini Messageboard", messages: messages });
-});
+// POST new message to db
+router.post("/", userController.index_post);
 
-router.post("/", async function (req, res, next) {
-  if (req.body.author !== "" || req.body.message !== "") {
-    const newMsg = new Message({
-      text: req.body.message,
-      user: req.body.author,
-      added: new Date(),
-    });
+// GET new user sign up
+router.get("/sign-up", userController.create_user_get);
 
-    await newMsg.save();
-  }
-
-  res.redirect("/");
-});
+// POST new user to db
+router.post("/sign-up", userController.create_user_post);
 
 module.exports = router;
