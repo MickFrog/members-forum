@@ -3,29 +3,25 @@ require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const passport = require("passport");
+const passportLocal = require("passport-local");
+const MongoSessionStore = require("connect-mongo");
+const mongoose = require("mongoose");
 const logger = require("morgan");
 
 const indexRouter = require("./routes/index");
-// const newFormRouter = require("./routes/newform");
 
 const app = express();
 
-const mongoose = require("mongoose");
-
-// setup connection to mongoDB
+// MONGO DB SETUP //
 mongoose.set("strictQuery", false);
-
 const mongoDB = process.env.MONGO_KEY;
 
 async function main() {
   await mongoose.connect(mongoDB);
 }
-
 // connect to mongoDB
 main().catch((err) => console.log(err));
-
-// add seed data
-// populateDB().catch((err) => console.log("Populating error"));
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

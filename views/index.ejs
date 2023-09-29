@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/stylesheets/style.css" />
-    <title>Mini MessageBoard</title>
-  </head>
-  <body>
-    <header>
-      <h1><%= locals.title %></h1>
-    </header>
-    <main>
+<%- include('./partials/header') %>
+
       <div class="messages-container">
         <% for (let i = 0; i < locals.messages.length; i++) {%>
         <div class="message" data-user=<%= locals.messages[i].user.toString() %> 
@@ -26,13 +15,5 @@
           <textarea type="text" name="message" placeholder="Message Text"></textarea>
           <button type="submit">Add message</button>
         </form>
-    </main>
-    <footer>
-      Copyright&nbsp;&copy;&nbsp;<a
-        href="https://www.github.com/MickFrog"
-        target="_blank"
-        >MickFrog</a
-      >
-    </footer>
-  </body>
-</html>
+
+<%- include('./partials/footer') %>
