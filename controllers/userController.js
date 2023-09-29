@@ -79,10 +79,10 @@ exports.create_user_post = [
     .trim()
     .isLength({ min: 3 })
     .escape(),
-  body("password", "Password must be filled and have more than 4 characters")
-    .trim()
-    .isLength({ min: 4 })
-    .escape(),
+  body(
+    "password",
+    "Password must be filled and have more than 4 characters"
+  ).isLength({ min: 4 }),
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);
@@ -120,3 +120,12 @@ exports.create_user_post = [
     })(req, res, next); // to ensure calling of the passport middleware
   }),
 ];
+
+exports.logout_user = (req, res, next) => {
+  req.logout((err) => {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
+};

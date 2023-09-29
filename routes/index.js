@@ -21,4 +21,7 @@ router.get("/sign-up", userController.create_user_get);
 // POST new user to db
 router.post("/sign-up", userController.create_user_post);
 
+// GET request to logout
+router.get("/logout", userController.logout_user);
+
 module.exports = router;
