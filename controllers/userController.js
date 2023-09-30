@@ -161,6 +161,9 @@ exports.logout_user = (req, res, next) => {
     if (err) {
       return next(err);
     }
-    res.redirect("/");
+    // delete user session from the db
+    req.session.destroy((err) =>
+      err ? console.log("Error destroying session") : res.redirect("/")
+    );
   });
 };
