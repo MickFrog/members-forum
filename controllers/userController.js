@@ -47,14 +47,11 @@ exports.login_user_get = asyncHandler(function (req, res, next) {
 });
 
 exports.login_user_post = [
-  body("username", "Username must be filled and with more than 3 characters")
+  body("username", "Username must be filled")
     .trim()
-    .isLength({ min: 3 })
+    .isLength({ min: 1 })
     .escape(),
-  body(
-    "password",
-    "Password must be filled and have more than 4 characters"
-  ).isLength({ min: 4 }),
+  body("password", "Password must be filled").isLength({ min: 1 }),
 
   asyncHandler(async (req, res, next) => {
     const errors = validationResult(req);

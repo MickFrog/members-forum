@@ -7,9 +7,11 @@
 
     <form action="#" method="post">
         <h3>Fill in the sign up form</h3>
-        <input type="text" name="username" value="<%= locals.oldDetails === undefined ? '' : locals.oldDetails.username %>" placeholder="Username" required>
-        <input type="password" name="password" value="<%= locals.oldDetails === undefined ? '' : locals.oldDetails.password %>" placeholder="Password" required>
+        <input type="text" name="username" value="<%= locals.oldDetails === undefined ? '' : locals.oldDetails.username %>" placeholder="Username" required minlength="3">
+        <input type="password" name="password" value="<%= locals.oldDetails === undefined ? '' : locals.oldDetails.password %>" placeholder="Password" required minlength="4">
         <button type="submit">Sign up</button>
     </form>
+    <br>
+    <h4>Already a member? <a href="/login">Log in</a>.</h4>
 
 <%- include('./partials/footer') %>
