@@ -143,16 +143,16 @@ exports.create_user_post = [
         });
 
         await newUser.save();
+
+        // successful authentication
+        passport.authenticate("local", {
+          successRedirect: "/",
+          failureRedirect: "/sign-up",
+        })(req, res, next); // to ensure calling of the passport middleware
       });
     } catch (err) {
       return next(err);
     }
-
-    // successful authentication
-    passport.authenticate("local", {
-      successRedirect: "/",
-      failureRedirect: "/sign-up",
-    })(req, res, next); // to ensure calling of the passport middleware
   }),
 ];
 
