@@ -154,7 +154,7 @@ exports.create_user_post = [
     // successful authentication
     passport.authenticate("local", {
       successRedirect: "/",
-      failureRedirect: "/login",
+      failureRedirect: "/sign-up",
     })(req, res, next); // to ensure calling of the passport middleware
   }),
 ];
