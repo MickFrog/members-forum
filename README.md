@@ -6,7 +6,7 @@ This is a message board built on top of my previous mini-messageboard project [h
 
 It adds authentication to the application to allow only logged in users to send messages. Sessions are also added to the application to prevent users from having to login every time.
 
-The live app can be checked out [here](https://message-board-production-b120.up.railway.app/)
+The live app can be checked out [here](https://members-forum-production.up.railway.app/)
 
 ## Features
 
