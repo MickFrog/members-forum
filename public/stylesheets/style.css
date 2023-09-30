@@ -112,6 +112,7 @@ textarea {
 }
 
 button {
+  margin-bottom: 1rem;
   width: inherit;
   font-family: inherit;
   font-size: inherit;
