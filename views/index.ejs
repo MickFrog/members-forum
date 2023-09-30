@@ -1,8 +1,9 @@
 <%- include('./partials/header') %>
 
+      <h2 class="greeting">Hello <%= locals.currentUser.username %></h2>
       <div class="messages-container">
         <% for (let i = 0; i < locals.messages.length; i++) {%>
-        <div class="message" data-user=<%= locals.messages[i].user.toString() %> 
+        <div class="message" data-user=<%= locals.messages[i].user.username %> 
             data-added=<%= locals.messages[i].added.toLocaleString().replace(',', "") %>>
           <p class="text"><%= locals.messages[i].text %></p>
         </div>

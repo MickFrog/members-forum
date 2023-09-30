@@ -81,6 +81,11 @@ main {
   width: max-content;
 }
 
+.greeting {
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
 form {
   border: none;
   text-align: center;

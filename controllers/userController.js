@@ -12,7 +12,7 @@ exports.index_get = asyncHandler(async function (req, res, next) {
     return;
   }
 
-  const messages = await Message.find({});
+  const messages = await Message.find({}).populate("user").exec();
 
   res.render("index", { title: "Members Forum", messages: messages });
 });
@@ -46,7 +46,8 @@ exports.login_user_post = [
       });
     }
 
-    const inUser = await User.findOne({ username: req.body.username });
+    // Get looged in user
+    const inUser = await User.findOne({ username: req.body.username }).exec();
 
     if (!inUser) {
       return res.render("login", {
