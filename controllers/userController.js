@@ -18,9 +18,29 @@ exports.index_get = asyncHandler(async function (req, res, next) {
 });
 
 // to add a message to forum
-exports.index_post = asyncHandler(function (req, res, next) {
-  res.send("NOT IMPLEMENTED: To add a message by the user");
-});
+exports.index_post = [
+  body("message", "Message should not be empty").trim().isLength({ min: 1 }),
+
+  asyncHandler(async (req, res, next) => {
+    const errors = validationResult(req);
+
+    const newMsg = new Message({ text: req.body.message, user: req.user._id });
+
+    if (!errors.isEmpty()) {
+      const messages = await Message.find({}).populate("user").exec();
+
+      return res.render("index", {
+        title: "Members Forum",
+        messages: messages,
+        validationErrors: errors,
+      });
+    }
+
+    // upload message to forum
+    await newMsg.save();
+    res.redirect("/");
+  }),
+];
 
 exports.login_user_get = asyncHandler(function (req, res, next) {
   res.render("login", { title: "User login" });
