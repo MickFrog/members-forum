@@ -32,7 +32,7 @@ exports.index_post = [
       return res.render("index", {
         title: "Members Forum",
         messages: messages,
-        validationErrors: errors,
+        validationErrors: errors.array(),
       });
     }
 
@@ -62,7 +62,7 @@ exports.login_user_post = [
     if (!errors.isEmpty()) {
       return res.render("login", {
         title: "User login",
-        validationErrors: errors,
+        validationErrors: errors.array(),
       });
     }
 
@@ -112,7 +112,7 @@ exports.create_user_post = [
     if (!errors.isEmpty()) {
       return res.render("/sign-up", {
         title: "User sign-up",
-        validationErrors: errors,
+        validationErrors: errors.array(),
       });
     }
 

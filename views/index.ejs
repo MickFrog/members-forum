@@ -10,11 +10,17 @@
         <% } %>
       </div>
 
+      <% if(locals.validationErrors !== undefined) { %>
+        <% validationErrors.forEach(err => {  %>
+          <p style="color: red;"><%= err.msg %></p>
+        <% }) %>
+      <% } %>
+      
       <form action="#" method="post">
-          <h3>Add new message</h3>
-          <textarea type="text" name="message" placeholder="Message Text" required></textarea>
-          <button type="submit">Add message</button>
-        </form>
-        <a href="/logout"><button>Log out</button></a>
+        <h3>Add new message</h3>
+        <textarea type="text" name="message" placeholder="Message Text" required></textarea>
+        <button type="submit">Add message</button>
+      </form>
+      <a href="/logout"><button>Log out</button></a>
 
 <%- include('./partials/footer') %>

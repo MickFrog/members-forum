@@ -1,5 +1,10 @@
 <%- include('./partials/header') %>
-
+    <% if(locals.validationErrors !== undefined) { %>
+        <% validationErrors.forEach(err => {  %>
+            <p style="color: red;"><%= err.msg %></p>
+        <% }) %>
+    <% } %>
+    
     <form action="#" method="post">
         <h3>Fill in the sign up form</h3>
         <input type="text" name="username" placeholder="Username">
