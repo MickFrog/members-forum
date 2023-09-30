@@ -63,16 +63,24 @@ exports.login_user_post = [
       return res.render("login", {
         title: "User login",
         validationErrors: errors.array(),
+        oldDetails: {
+          username: req.body.username,
+          password: req.body.password,
+        },
       });
     }
 
-    // Get looged in user
+    // Get logged in user
     const inUser = await User.findOne({ username: req.body.username }).exec();
 
     if (!inUser) {
       return res.render("login", {
         title: "User login",
         error: "Username is invalid",
+        oldDetails: {
+          username: req.body.username,
+          password: req.body.password,
+        },
       });
     }
 
@@ -81,6 +89,10 @@ exports.login_user_post = [
       return res.render("login", {
         title: "User login",
         error: "Password is invalid",
+        oldDetails: {
+          username: req.body.username,
+          password: req.body.password,
+        },
       });
     }
 
@@ -113,6 +125,10 @@ exports.create_user_post = [
       return res.render("/sign-up", {
         title: "User sign-up",
         validationErrors: errors.array(),
+        oldDetails: {
+          username: req.body.username,
+          password: req.body.password,
+        },
       });
     }
 

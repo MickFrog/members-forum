@@ -4,11 +4,11 @@
             <p style="color: red;"><%= err.msg %></p>
         <% }) %>
     <% } %>
-    
+
     <form action="#" method="post">
         <h3>Fill in the sign up form</h3>
-        <input type="text" name="username" placeholder="Username">
-        <input type="password" name="password" placeholder="Password">
+        <input type="text" name="username" value="<%= locals.oldDetails === undefined ? '' : locals.oldDetails.username %>" placeholder="Username" required>
+        <input type="password" name="password" value="<%= locals.oldDetails === undefined ? '' : locals.oldDetails.password %>" placeholder="Password" required>
         <button type="submit">Sign up</button>
     </form>
 
